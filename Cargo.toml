@@ -1,0 +1,20 @@
+[package]
+name = "vtflib2"
+description = "Better, safe wrapper for VTFLib(2)."
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/lasa01/vtflib2-rs/"
+readme = "README.md"
+keywords = ["vtflib", "vtf"]
+categories = ["api-bindings", "multimedia::images"]
+authors = ["Lassi Säike"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+static = ["vtflib2-sys/static"]
+
+[dependencies]
+bitflags = "2.4.0"
+vtflib2-sys = { git = "https://github.com/lasa01/vtflib2-sys", rev = "1ae3b68274e9c2c2465bede588f213299611630a" }

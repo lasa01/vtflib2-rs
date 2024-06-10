@@ -672,7 +672,7 @@ impl VtfFile {
         unsafe {
             VtfLibErrorWrapper::ffi_try(|error| {
                 ffi::vlImageConvertToRGBA8888(
-                    source.as_ptr() as *mut u8,
+                    source.as_ptr().cast_mut(),
                     buf.as_mut_ptr(),
                     width,
                     height,
@@ -706,7 +706,7 @@ impl VtfFile {
         unsafe {
             VtfLibErrorWrapper::ffi_try(|error| {
                 ffi::vlImageConvertFromRGBA8888(
-                    source.as_ptr() as *mut u8,
+                    source.as_ptr().cast_mut(),
                     buf.as_mut_ptr(),
                     width,
                     height,
@@ -741,7 +741,7 @@ impl VtfFile {
         unsafe {
             VtfLibErrorWrapper::ffi_try(|error| {
                 ffi::vlImageConvert(
-                    source.as_ptr() as *mut u8,
+                    source.as_ptr().cast_mut(),
                     buf.as_mut_ptr(),
                     width,
                     height,
@@ -775,7 +775,7 @@ impl VtfFile {
         unsafe {
             VtfLibErrorWrapper::ffi_try(|error| {
                 ffi::vlImageConvertToNormalMap(
-                    source.as_ptr() as *mut u8,
+                    source.as_ptr().cast_mut(),
                     buf.as_mut_ptr(),
                     width,
                     height,
@@ -822,7 +822,7 @@ impl VtfFile {
         unsafe {
             VtfLibErrorWrapper::ffi_try(|error| {
                 ffi::vlImageResize(
-                    source.as_ptr() as *mut u8,
+                    source.as_ptr().cast_mut(),
                     buf.as_mut_ptr(),
                     source_width,
                     source_height,
@@ -878,7 +878,7 @@ impl VtfFile {
         let mut z = 0.0;
         unsafe {
             ffi::vlImageComputeImageReflectivity(
-                data.as_ptr() as *mut u8,
+                data.as_ptr().cast_mut(),
                 width,
                 height,
                 &mut x,
@@ -1219,7 +1219,7 @@ impl VtfFile {
             face,
             slice,
             mipmap_level,
-            data.as_ptr() as *mut u8,
+            data.as_ptr().cast_mut(),
         );
     }
 
@@ -1263,7 +1263,7 @@ impl VtfFile {
             return Err(Error::InvalidLength);
         }
         unsafe {
-            ffi::vlImageSetThumbnailData(self.pointer, data.as_ptr() as *mut u8);
+            ffi::vlImageSetThumbnailData(self.pointer, data.as_ptr().cast_mut());
         }
         Ok(())
     }

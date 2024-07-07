@@ -17,4 +17,4 @@ static = ["vtflib2-sys/static"]
 
 [dependencies]
 bitflags = "2.4.0"
-vtflib2-sys = { git = "https://github.com/lasa01/vtflib2-sys", rev = "15410a7112b673109a852e82f0c3d7e70c18b391" }
+vtflib2-sys = { git = "https://github.com/lasa01/vtflib2-sys", rev = "0b961399ae2ab21add7a82183f36a3e9e5697477" }
